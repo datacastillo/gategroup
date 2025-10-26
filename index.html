@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vaycode</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- MAIN -->
+    <div class="card">
+      <h1>Vaycode</h1>
+      
+      <!-- Formulario -->
+      <div style="margin-top:12px;">
+        <label for="title">Título</label>
+        <input id="title" type="text" placeholder="Ej: Revisar equipaje de zona A" />
+        <label for="desc">Descripción</label>
+        <textarea id="desc" placeholder="Detalles de la tarea..."></textarea>
+
+        <div class="row" style="margin-top:8px;">
+          <div style="flex:1">
+            <label for="assignee">Asignar a</label>
+            <select id="assignee"></select>
+          </div>
+          <div style="width:160px;">
+            <label for="deadline">Fecha límite (opcional)</label>
+            <input id="deadline" type="datetime-local" />
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:12px;">
+          <button id="createBtn" class="btn">Crear tarea</button>
+          <button id="autoAssignBtn" class="btn ghost">Auto-asignar a disponible</button>
+          <div style="margin-left:auto" class="muted">Usuarios: 4</div>
+        </div>
+      </div>
+
+      <hr style="border:none; height:1px; background:rgba(255,255,255,0.02); margin:18px 0;" />
+
+      <!-- Dashboard rápido -->
+      <div style="display:flex; gap:8px; margin-bottom:12px;">
+        <div class="stat" style="flex:1"><div class="muted">Total tareas</div><strong id="statTotal">0</strong></div>
+        <div class="stat" style="flex:1"><div class="muted">En progreso</div><strong id="statInProg">0</strong></div>
+        <div class="stat" style="flex:1"><div class="muted">Retrasadas</div><strong id="statLate">0</strong></div>
+      </div>
+
+      <!-- Filtro y lista -->
+      <div style="display:flex; gap:8px; margin-bottom:12px;">
+        <select id="filterStatus">
+          <option value="all">Todas</option>
+          <option value="pending">Pendiente</option>
+          <option value="inprogress">En progreso</option>
+          <option value="done">Completadas</option>
+        </select>
+        <input id="search" type="text" placeholder="Buscar por título o asignado..." style="flex:1" />
+        <button id="clear" class="btn ghost">Limpiar</button>
+      </div>
+
+      <div id="tasksList"></div>
+    </div>
+
+    <!-- SIDE -->
+    <div class="card">
+      <h2 style="margin-bottom:8px;">Equipo y notas</h2>
+      <p class="muted">Usuarios</p>
+      <ul id="usersList" style="padding-left:18px; margin-top:8px;"></ul>
+
+      <hr style="border:none; height:1px; background:rgba(255,255,255,0.02); margin:12px 0;" />
+
+      <h3 style="margin-bottom:6px;">Cómo usar Vaycode</h3>
+      <ol style="padding-left:18px; color:#0a4e0e; font-size:14px">
+        <li>Crear tarea: elige un asignado o usa Auto-asignar.</li>
+        <li>Iniciar: presiona Iniciar para pasar a "En progreso".</li>
+        <li>Completar: marca como Completada al terminar.</li>
+        <li>Dashboard: revisa las métricas en el panel.</li>
+      </ol>
+
+  <script src="script.js"></script>
+</body>
+</html>
